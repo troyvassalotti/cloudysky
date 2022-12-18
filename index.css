@@ -16,3 +16,7 @@ body {
   place-items: center;
   min-block-size: 100vh;
 }
+
+main {
+  inline-size: 100%;
+}
