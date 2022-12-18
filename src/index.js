@@ -14,6 +14,10 @@ import styles from "./index.styles";
  * @prop {String} buttonPixels - Take the supplied button size and turn it into a pixel string.
  *
  * @csspart hillside - The SVG of the hill.
+ * 
+ * @cssprop --cloud-foreground - A valid CSS background image value to replace the foreground clouds.
+ * @cssprop --cloud-background - A valid CSS background image value to replace the background clouds.
+ * @cssprop --cloud-filter - Change the CSS filter on your clouds.
  */
 export class CloudySky extends LitElement {
   static styles = styles;
