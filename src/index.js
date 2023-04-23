@@ -14,10 +14,12 @@ import styles from "./index.styles";
  * @prop {String} buttonPixels - Take the supplied button size and turn it into a pixel string.
  *
  * @csspart hillside - The SVG of the hill.
+ * @csspart sundial - SVG of the button.
  *
  * @cssprop --cloud-foreground - A valid CSS background image value to replace the foreground clouds.
  * @cssprop --cloud-background - A valid CSS background image value to replace the background clouds.
  * @cssprop --cloud-filter - Change the CSS filter on your clouds.
+ * @cssprop --sundial-layer - A z-index value for the sundial.
  */
 export class CloudySky extends LitElement {
   static styles = styles;
@@ -75,6 +77,7 @@ export class CloudySky extends LitElement {
 
   renderSun(size) {
     return html`<svg
+      part="sundial"
       xmlns="http://www.w3.org/2000/svg"
       width="${size}"
       height="${size}"
@@ -98,6 +101,7 @@ export class CloudySky extends LitElement {
 
   renderMoon(size) {
     return html`<svg
+      part="sundial"
       xmlns="http://www.w3.org/2000/svg"
       width="${size}"
       height="${size}"
@@ -127,16 +131,15 @@ export class CloudySky extends LitElement {
       <div data-clouds class="${!this._active ? "sunset" : nothing}">
         ${this.renderCloudCoverage()}
       </div>
-      <div class="wrapper sundialWrapper" style="block-size: ${this.buttonPixels}">
-        <button
-          title="Turn the clouds on or off."
-          type="button"
-          name="sundial"
-          class="sundial sun"
-          @click="${this.#setClouds}">
-          ${this._active ? this.renderSun(this.buttonPixels) : this.renderMoon(this.buttonPixels)}
-        </button>
-      </div>
+      <button
+        part="sundial-button"
+        title="Turn the clouds on or off."
+        type="button"
+        name="sundial"
+        class="sundial sun"
+        @click="${this.#setClouds}">
+        ${this._active ? this.renderSun(this.buttonPixels) : this.renderMoon(this.buttonPixels)}
+      </button>
       <div class="wrapper slotArea">
         <slot></slot>
       </div>

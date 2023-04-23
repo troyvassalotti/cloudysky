@@ -8,15 +8,5 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-block-size: 100vh;
-}
-
-main {
-  inline-size: 100%;
 }

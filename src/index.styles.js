@@ -21,8 +21,7 @@ export default css`
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sundial,
-    .sundialWrapper {
+    .sundial {
       display: none;
     }
   }
@@ -45,11 +44,12 @@ export default css`
       border: none;
       color: currentColor;
       cursor: pointer;
+      inset-block-start: 0;
+      inset-inline-end: 0;
       padding-block: 0;
       padding-inline: 1ch;
       position: absolute;
-      right: 0;
-      top: 0;
+      z-index: var(--sundial-layer, 10);
     }
 
     @keyframes fadeIn {
@@ -131,7 +131,7 @@ export default css`
 
     .cloud:nth-child(10) {
       animation-delay: -184.61538462s;
-      top: 60%;
+      inset-block-start: 60%;
     }
 
     .cloud.foreground:nth-child(10) {
@@ -146,7 +146,7 @@ export default css`
 
     .cloud:nth-child(9) {
       animation-delay: -166.15384615s;
-      top: 54%;
+      inset-block-start: 54%;
     }
 
     .cloud.foreground:nth-child(9) {
@@ -161,7 +161,7 @@ export default css`
 
     .cloud:nth-child(8) {
       animation-delay: -147.69230769s;
-      top: 48%;
+      inset-block-start: 48%;
     }
 
     .cloud.foreground:nth-child(8) {
@@ -176,7 +176,7 @@ export default css`
 
     .cloud:nth-child(7) {
       animation-delay: -129.23076923s;
-      top: 42%;
+      inset-block-start: 42%;
     }
 
     .cloud.foreground:nth-child(7) {
@@ -191,7 +191,7 @@ export default css`
 
     .cloud:nth-child(6) {
       animation-delay: -110.76923077s;
-      top: 36%;
+      inset-block-start: 36%;
     }
 
     .cloud.foreground:nth-child(6) {
@@ -206,7 +206,7 @@ export default css`
 
     .cloud:nth-child(5) {
       animation-delay: -92.30769231s;
-      top: 30%;
+      inset-block-start: 30%;
     }
 
     .cloud.foreground:nth-child(5) {
@@ -221,7 +221,7 @@ export default css`
 
     .cloud:nth-child(4) {
       animation-delay: -73.84615385s;
-      top: 24%;
+      inset-block-start: 24%;
     }
 
     .cloud.foreground:nth-child(4) {
@@ -236,7 +236,7 @@ export default css`
 
     .cloud:nth-child(3) {
       animation-delay: -55.38461538s;
-      top: 18%;
+      inset-block-start: 18%;
     }
 
     .cloud.foreground:nth-child(3) {
@@ -251,7 +251,7 @@ export default css`
 
     .cloud:nth-child(2) {
       animation-delay: -36.92307692s;
-      top: 12%;
+      inset-block-start: 12%;
     }
 
     .cloud.foreground:nth-child(2) {
@@ -266,7 +266,7 @@ export default css`
 
     .cloud:nth-child(1) {
       animation-delay: -18.46153846s;
-      top: 6%;
+      inset-block-start: 6%;
     }
 
     .cloud.foreground:nth-child(1) {
