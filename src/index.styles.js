@@ -86,7 +86,7 @@ export default css`
 
     [data-clouds] {
       animation: fadeIn 3s ease-out;
-      block-size: clamp(30%, 15vw, 60%);
+      block-size: min(33vh, 60%);
       inset: 0;
       overflow: hidden;
       pointer-events: none;
