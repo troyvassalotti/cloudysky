@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  color-scheme: light dark;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -8,5 +7,8 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+body {
   margin: 0;
 }

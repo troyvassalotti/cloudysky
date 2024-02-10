@@ -15,11 +15,18 @@ import styles from "./index.styles";
  *
  * @csspart hillside - The SVG of the hill.
  * @csspart sundial - SVG of the button.
+ * @csspart sundial-button - Button element housing the svg.
+ * @csspart shell - Outermost wrapper of the shadow DOM.
+ * @csspart wrapper - Slotted area content wrapper.
+ * @csspart clouds - Container for all the cloud coverage.
  *
- * @cssprop --cloud-foreground - A valid CSS background image value to replace the foreground clouds.
- * @cssprop --cloud-background - A valid CSS background image value to replace the background clouds.
- * @cssprop --cloud-filter - Change the CSS filter on your clouds.
- * @cssprop --sundial-layer - A z-index value for the sundial.
+ * @cssprop --cloud-fill-foreground-light - A valid CSS color for the foreground clouds in light color scheme.
+ * @cssprop --cloud-fill-foreground-dark - A valid CSS color for the foreground clouds in dark color scheme.
+ * @cssprop --cloud-fill-background-light - A valid CSS color for the background clouds in light color scheme.
+ * @cssprop --cloud-fill-background-dark - A valid CSS color for the background colors in dark color scheme.
+ * @cssprop --hillside-fill-light - A valid CSS color for the hillside in light color scheme.
+ * @cssprop --hillside-fill-dark - A valid CSS color for the hillside in dark color scheme.
+ * @cssprop --sundial-layer - A z-index value for the sundial, if necessary.
  */
 export class CloudySky extends LitElement {
   static styles = styles;
@@ -63,16 +70,35 @@ export class CloudySky extends LitElement {
   }
 
   renderCloudCoverage() {
-    return html`<div class="cloud foreground"></div>
-      <div class="cloud background"></div>
-      <div class="cloud foreground"></div>
-      <div class="cloud background"></div>
-      <div class="cloud foreground"></div>
-      <div class="cloud background"></div>
-      <div class="cloud background"></div>
-      <div class="cloud foreground"></div>
-      <div class="cloud background"></div>
-      <div class="cloud background"></div>`;
+    return html`
+      <div class="cloud foreground">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+      <div class="cloud foreground">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+      <div class="cloud foreground">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+      <div class="cloud foreground">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+      <div class="cloud background">${this.renderCloud()}</div>
+    `;
+  }
+
+  renderCloud() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="var(--cloud-fill)"
+        stroke="var(--cloud-fill)"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+      </svg>
+    `;
   }
 
   renderSun(size) {
@@ -127,8 +153,8 @@ export class CloudySky extends LitElement {
   }
 
   render() {
-    return html` <div class="wrapper shell">
-      <div data-clouds class="${!this._active ? "sunset" : nothing}">
+    return html` <div class="wrapper shell" part="shell">
+      <div part="clouds" data-clouds class="${!this._active ? "sunset" : nothing}">
         ${this.renderCloudCoverage()}
       </div>
       <button
@@ -140,7 +166,7 @@ export class CloudySky extends LitElement {
         @click="${this.#setClouds}">
         ${this._active ? this.renderSun(this.buttonPixels) : this.renderMoon(this.buttonPixels)}
       </button>
-      <div class="wrapper slotArea">
+      <div class="wrapper slotArea" part="wrapper">
         <slot></slot>
       </div>
       ${this.hillside ? this.renderHillside() : nothing}
