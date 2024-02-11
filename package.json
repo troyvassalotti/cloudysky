@@ -2,22 +2,15 @@
   "name": "@troyv/cloudysky",
   "version": "1.0.5",
   "type": "module",
-  "main": "dist/cloudysky.js",
+  "main": "./cloudysky.js",
   "exports": {
-    ".": "./dist/cloudysky.js"
+    ".": "./cloudysky.js"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "start": "npx http-server .",
     "format": "npx prettier --write ."
   },
   "dependencies": {
     "lit": "^3.1.2"
-  },
-  "devDependencies": {
-    "vite": "^5.0.12"
   }
 }
