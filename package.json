@@ -2,9 +2,9 @@
   "name": "@troyv/cloudysky",
   "version": "2.0.0",
   "type": "module",
-  "main": "./cloudysky.js",
+  "main": "./cloudy-sky.js",
   "exports": {
-    ".": "./cloudysky.js"
+    ".": "./cloudy-sky.js"
   },
   "scripts": {
     "start": "npx http-server .",
