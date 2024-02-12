@@ -233,7 +233,7 @@ export default class CloudySky extends LitElement {
 
       .cloud.background:nth-child(${i}) {
         animation-duration: ${Math.floor(duration * 1.25 - i * 4)}s;
-        block-size: ${Math.abs(Math.floor(height / 1.1 - i * 1.25))}%;
+        block-size: ${Math.abs(Math.floor(height / 1.1 - i * 1.5))}%;
       }
     `;
 
